@@ -26,4 +26,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Objekty\Armor\" />
+    <Folder Include="Objekty\Weapons\" />
+  </ItemGroup>
+
 </Project>

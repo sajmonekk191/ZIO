@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using ZIO.containers;
+using ZIO.Objekty;
 
 namespace ZIO
 {
@@ -14,7 +15,6 @@ namespace ZIO
 
         int jumpSpeed = 4;
         int force = 8;
-        int score = 0;
         public ZIO()
         {
             InitializeComponent();
@@ -25,19 +25,24 @@ namespace ZIO
             this.FormBorderStyle = FormBorderStyle.None;
             this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             this.TopMost = true;
-            hodnoty.PlayerSpawn = new Point(343, 528);
+            Player.PlayerSpawn = new Point(343, 528);
+            Player.HP = 3;
+            Player.Level = 1;
+            ChampHPlbl.Text = Player.HP.ToString();
+            levellbl.Text = Player.Level.ToString();
+            Goldlbl.Text = Player.Gold.ToString();
         }
         private void ZIO_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.A)
             {
                 Left = true;
-                Player.Image = Properties.Resources.player_left;
+                Champion.Image = Properties.Resources.player_left;
             }
             if (e.KeyCode == Keys.D)
             {
                 Right = true;
-                Player.Image = Properties.Resources.player_right;
+                Champion.Image = Properties.Resources.player_right;
             }
             if (e.KeyCode == Keys.W && !Up || e.KeyCode == Keys.Space && !Up)
             {
@@ -70,7 +75,6 @@ namespace ZIO
         private void GameTimer_Tick(object sender, EventArgs e)
         {
             // Move //
-            Player.Top += jumpSpeed;
             if (Up && force < 0)
             {
                 Up = false;
@@ -78,12 +82,12 @@ namespace ZIO
 
             if (Left)
             {
-                Player.Left -= 5;
+                Champion.Left -= 5;
             }
 
             if (Right)
             {
-                Player.Left += 5;
+                Champion.Left += 5;
             }
 
             if (Up)
@@ -95,32 +99,67 @@ namespace ZIO
             {
                 jumpSpeed = 12;
             }
+            Champion.Top += jumpSpeed;
             // Move //
 
-            foreach(Control i in this.Controls)
+            foreach (Control i in this.Controls)
             {
                 if(i is PictureBox && i.Tag == "Platform")
                 {
-                    if (Player.Bounds.IntersectsWith(i.Bounds) && !Up)
+                    if (Champion.Bounds.IntersectsWith(i.Bounds) && !Up)
                     {
                         force = 8;
-                        Player.Top = i.Top - Player.Height - 1;
+                        Champion.Top = i.Top - Champion.Height - 1;
+                    }
+                }
+                if (i is PictureBox && i.Tag == "Gold")
+                {
+                    if (Champion.Bounds.IntersectsWith(i.Bounds))
+                    {
+                        i.Dispose();
+                        Player.Gold++;
+                        Goldlbl.Text = Player.Gold.ToString();
+                    }
+                }
+                if (i is PictureBox && i.Tag == "Item")
+                {
+                    if (Champion.Bounds.IntersectsWith(i.Bounds))
+                    {
+                        i.Visible = false;
+
                     }
                 }
             }
             // Move //
 
             // Death Func //
-            if(Player.Location.Y > 1000)
+            if (Champion.Location.Y > 1000)
             {
-                Player.Location = hodnoty.PlayerSpawn;
+                Champion.Location = Player.PlayerSpawn;
+                if(Player.HP > 0)
+                {
+                    Player.HP--;
+                    ChampHPlbl.Text = Player.HP.ToString();
+                }
             }
             // Death Func //
+            if(Player.HP == 0)
+            {
+                Pause_Game();
+            }
         }
 
         private void ZIO_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+        private void Pause_Game()
+        {
+            GameTimer.Stop();
+        }
+        private void Start_Game()
+        {
+            GameTimer.Start();
         }
     }
 }

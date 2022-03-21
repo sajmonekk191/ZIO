@@ -10,9 +10,5 @@ namespace ZIO.containers
         public static string Password;
         public static int Level = 0;
         // Client //
-
-        // In Game //
-        public static Point PlayerSpawn;
-        // In Game //
     }
 }
