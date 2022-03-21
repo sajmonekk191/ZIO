@@ -85,7 +85,7 @@ namespace ZIO
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if (!hodnoty.Connected)
+            if (hodnoty.Connected)
             {
                 MessageBox.Show("You must be Connected to ZIO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
