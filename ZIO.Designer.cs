@@ -63,7 +63,7 @@ namespace ZIO
             // 
             // Champion
             // 
-            this.Champion.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.Champion.BackColor = System.Drawing.Color.Transparent;
             this.Champion.Image = global::ZIO.Properties.Resources.player_right;
             this.Champion.Location = new System.Drawing.Point(343, 584);
             this.Champion.Name = "Champion";
@@ -175,7 +175,7 @@ namespace ZIO
             // Item1
             // 
             this.Item1.BackColor = System.Drawing.Color.Transparent;
-            this.Item1.Image = global::ZIO.Properties.Resources.gun;
+            this.Item1.Image = global::ZIO.Properties.Resources.gun_left;
             this.Item1.Location = new System.Drawing.Point(1595, 481);
             this.Item1.Name = "Item1";
             this.Item1.Size = new System.Drawing.Size(50, 50);
@@ -232,6 +232,7 @@ namespace ZIO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1904, 1059);
+            this.Controls.Add(this.Champion);
             this.Controls.Add(this.levellbl);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.Goldlbl);
@@ -246,7 +247,6 @@ namespace ZIO
             this.Controls.Add(this.Platform3);
             this.Controls.Add(this.Platform2);
             this.Controls.Add(this.Platform1);
-            this.Controls.Add(this.Champion);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ZIO";
@@ -274,7 +274,7 @@ namespace ZIO
 
         #endregion
 
-        private System.Windows.Forms.PictureBox Champion;
+        public System.Windows.Forms.PictureBox Champion;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.PictureBox Platform1;

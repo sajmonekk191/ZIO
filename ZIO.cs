@@ -12,9 +12,11 @@ namespace ZIO
         bool Left = false;
         bool Right = false;
         bool Up = false;
+        bool LastPos = false;
+        bool hitwall = false;
 
         int jumpSpeed = 4;
-        int force = 8;
+        int force = 10;
         public ZIO()
         {
             InitializeComponent();
@@ -37,16 +39,22 @@ namespace ZIO
             if (e.KeyCode == Keys.A)
             {
                 Left = true;
+                LastPos = false;
                 Champion.Image = Properties.Resources.player_left;
             }
             if (e.KeyCode == Keys.D)
             {
                 Right = true;
+                LastPos = true;
                 Champion.Image = Properties.Resources.player_right;
             }
-            if (e.KeyCode == Keys.W && !Up || e.KeyCode == Keys.Space && !Up)
+            if (e.KeyCode == Keys.W && !Up)
             {
                 Up = true;
+            }
+            if(e.KeyCode == Keys.Space)
+            {
+                if(Objekty.Weapons.SinglePistol.Activated) Objekty.Ammo.PistolAmmo.FireBullet(this);
             }
             if (e.KeyCode == Keys.Escape)
             {
@@ -83,11 +91,19 @@ namespace ZIO
             if (Left)
             {
                 Champion.Left -= 5;
+                if(Objekty.Weapons.SinglePistol.Activated)
+                {
+                    Item1.Image = Properties.Resources.gun_left;
+                }
             }
 
             if (Right)
             {
                 Champion.Left += 5;
+                if (Objekty.Weapons.SinglePistol.Activated)
+                {
+                    Item1.Image = Properties.Resources.gun_right;
+                }
             }
 
             if (Up)
@@ -108,7 +124,7 @@ namespace ZIO
                 {
                     if (Champion.Bounds.IntersectsWith(i.Bounds) && !Up)
                     {
-                        force = 8;
+                        force = 10;
                         Champion.Top = i.Top - Champion.Height - 1;
                     }
                 }
@@ -125,8 +141,16 @@ namespace ZIO
                 {
                     if (Champion.Bounds.IntersectsWith(i.Bounds))
                     {
-                        i.Visible = false;
-
+                        Objekty.Weapons.SinglePistol.GetPistol();
+                    }
+                }
+                if(i is PictureBox && i.Tag == "Bullet")
+                {
+                    if (LastPos) i.Left += 30;
+                    else i.Left -= 30;
+                    if (i.Location.X > 1920 || i.Location.X < 0)
+                    {
+                        Objekty.Ammo.PistolAmmo.RemoveBullet(this,(PictureBox)i);
                     }
                 }
             }
@@ -142,11 +166,28 @@ namespace ZIO
                     ChampHPlbl.Text = Player.HP.ToString();
                 }
             }
+            if(Champion.Location.X > 1600)
+            {
+                
+            }
             // Death Func //
             if(Player.HP == 0)
             {
                 Pause_Game();
             }
+            // Items //
+            if(Objekty.Weapons.SinglePistol.Activated)
+            {
+                if (Right)
+                    Item1.Location = new Point(Champion.Location.X + 40, Champion.Location.Y + 3);
+                else if (Left)
+                    Item1.Location = new Point(Champion.Location.X - 40, Champion.Location.Y + 3);
+                else if (LastPos)
+                    Item1.Location = new Point(Champion.Location.X + 40, Champion.Location.Y + 3);
+                else if (!LastPos)
+                    Item1.Location = new Point(Champion.Location.X - 40, Champion.Location.Y + 3);
+            }
+            // Items //
         }
 
         private void ZIO_FormClosed(object sender, FormClosedEventArgs e)
@@ -155,6 +196,10 @@ namespace ZIO
         }
         private void Pause_Game()
         {
+            Up = false;
+            Left = false;
+            Right = false;
+            Champion.Location = Player.PlayerSpawn;
             GameTimer.Stop();
         }
         private void Start_Game()
