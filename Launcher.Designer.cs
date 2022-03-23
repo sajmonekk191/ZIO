@@ -41,7 +41,7 @@ namespace ZIO
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.account1 = new global::etcs.Account();
+            this.account1 = new etcs.Account();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.ClientTimer = new System.Windows.Forms.Timer(this.components);
@@ -255,7 +255,7 @@ namespace ZIO
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private global::etcs.Account account1;
+        private etcs.Account account1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Timer ClientTimer;

@@ -19,7 +19,7 @@ namespace ZIO.Properties {
     // pomocí nástroje podobného aplikaci ResGen nebo Visual Studio.
     // Chcete-li přidat nebo odebrat člena, upravte souboru .ResX a pak znovu spusťte aplikaci ResGen
     // s parametrem /str nebo znovu sestavte projekt aplikace Visual Studio.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -103,9 +103,9 @@ namespace ZIO.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap block {
+        internal static System.Drawing.Bitmap background0 {
             get {
-                object obj = ResourceManager.GetObject("block", resourceCulture);
+                object obj = ResourceManager.GetObject("background0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

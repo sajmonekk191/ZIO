@@ -4,9 +4,6 @@
     <Compile Update="etcs\Account.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="etcs\PauseGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
