@@ -69,7 +69,7 @@ namespace ZIO.Levels
             {
                 Objekty.Other.SpecialLuckyBlock.SpawnPlatform(Game, SpecialLucky1);
             }
-            if(chance < 40)
+            if(chance < 100)
             {
                 Objekty.Other.LuckyBlock.SpawnBlock(Game, Lucky1);
             }

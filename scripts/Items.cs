@@ -12,62 +12,86 @@ namespace ZIO.scripts
         {
             foreach (Control i in Game.Controls)
             {
-                if (i is PictureBox && i.Tag == "EquipItem")
+                if (i is PictureBox)
                 {
+                    if (ZIO.Left)
+                    {
+                        switch (i.Tag)
+                        {
+                            case "GoldAxe":
+                                if (containers.hodnoty.Equiped == "GoldAxe")
+                                {
+                                    i.Location = new Point(Game.Champion.Location.X - 120, Game.Champion.Location.Y + 3);
+                                    ((PictureBox)i).Image = Properties.Resources.GoldAxe_Left;
+                                }
+                                break;
+
+                            case "Pistol":
+                                if (containers.hodnoty.Equiped == "Pistol")
+                                {
+                                    i.Location = new Point(Game.Champion.Location.X - 40, Game.Champion.Location.Y + 3);
+                                    ((PictureBox)i).Image = Properties.Resources.gun_left;
+                                }
+                                break;
+                        }
+                    }
                     if (ZIO.Right)
                     {
-                        switch (i.Name)
+                        switch (i.Tag)
                         {
-                            case "goldaxe":
-                                i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
-                                ((PictureBox)i).Image = Properties.Resources.GoldAxe_Right;
+                            case "GoldAxe":
+                                if(containers.hodnoty.Equiped == "GoldAxe")
+                                {
+                                    i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
+                                    ((PictureBox)i).Image = Properties.Resources.GoldAxe_Right;
+                                }
                                 break;
 
-                            case "pistol":
-                                i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
-                                ((PictureBox)i).Image = Properties.Resources.gun_right;
+                            case "Pistol":
+                                if (containers.hodnoty.Equiped == "Pistol")
+                                {
+                                    i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
+                                    ((PictureBox)i).Image = Properties.Resources.gun_right;
+                                }
                                 break;
                         }
                     }
-                    else if (ZIO.Left)
+                    if (ZIO.LastPos)
                     {
-                        switch (i.Name)
+                        switch (i.Tag)
                         {
-                            case "goldaxe":
-                                i.Location = new Point(Game.Champion.Location.X - 120, Game.Champion.Location.Y + 3);
-                                ((PictureBox)i).Image = Properties.Resources.GoldAxe_Left;
+                            case "GoldAxe":
+                                if (containers.hodnoty.Equiped == "GoldAxe")
+                                    i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
                                 break;
 
-                            case "pistol":
-                                i.Location = new Point(Game.Champion.Location.X - 40, Game.Champion.Location.Y + 3);
-                                ((PictureBox)i).Image = Properties.Resources.gun_left;
+                            case "Pistol":
+                                if (containers.hodnoty.Equiped == "Pistol")
+                                    i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
                                 break;
                         }
                     }
-                    else if (ZIO.LastPos)
-                        switch (i.Name)
+                    if (ZIO.LastPos == false)
+                    {
+                        switch (i.Tag)
                         {
-                            case "goldaxe":
-                                i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
+                            case "GoldAxe":
+                                if (containers.hodnoty.Equiped == "GoldAxe")
+                                    i.Location = new Point(Game.Champion.Location.X - 120, Game.Champion.Location.Y + 3);
                                 break;
 
-                            case "pistol":
-                                i.Location = new Point(Game.Champion.Location.X + 40, Game.Champion.Location.Y + 3);
+                            case "Pistol":
+                                if (containers.hodnoty.Equiped == "Pistol")
+                                    i.Location = new Point(Game.Champion.Location.X - 40, Game.Champion.Location.Y + 3);
                                 break;
                         }
-                    else if (ZIO.LastPos == false)
-                        switch (i.Name)
-                        {
-                            case "goldaxe":
-                                i.Location = new Point(Game.Champion.Location.X - 120, Game.Champion.Location.Y + 3);
-                                break;
-
-                            case "pistol":
-                                i.Location = new Point(Game.Champion.Location.X - 40, Game.Champion.Location.Y + 3);
-                                break;
-                        }
+                    }
                 }
             }
+        }
+        public static void AddItemToInventory()
+        {
+
         }
     }
 }

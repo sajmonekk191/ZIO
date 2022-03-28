@@ -1,12 +1,17 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ZIO.Objekty.Weapons.Melee
 {
     internal class GoldAxe
     {
+        // CDR //
+        private static System.Timers.Timer cdr = new System.Timers.Timer(1000);
+        public static bool AttackReady = false;
+        // CDR //
         public static bool Activated = false;
-        public static int Damage = 12;
+        public static int Damage = 1;
 
         public static void SpawnItem(ZIO Game, Point pos)
         {
@@ -25,6 +30,7 @@ namespace ZIO.Objekty.Weapons.Melee
         public static void GetItem()
         {
             Activated = true;
+            AttackReady = true;
         }
         public static void Attack(ZIO Game, Point pos, bool Location)
         {
@@ -38,19 +44,30 @@ namespace ZIO.Objekty.Weapons.Melee
             };
             if (Location == true)
             {
-                Effect.Location = new Point(pos.X + 80, pos.Y - 40);
+                Effect.Location = new Point(pos.X + 140, pos.Y - 40);
                 Effect.Image = Properties.Resources.GoldAxeAttack_Right;
             }
             else
             {
-                Effect.Location = new Point(pos.X - 160, pos.Y - 40);
+                Effect.Location = new Point(pos.X - 240, pos.Y - 40);
                 Effect.Image = Properties.Resources.GoldAxeAttack_Left;
             }
             Effect.BringToFront();
             Game.Controls.Add(Effect);
-            etcs.Funkce.Wait(500);
+            AttackReady = false;
+            cdr.Elapsed += OnTimedEvent;
+            cdr.Start();
+            etcs.Funkce.Wait(300);
             Game.Controls.Remove(Effect);
             Effect.Dispose();
+        }
+        public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            AttackReady = true;
+        }
+        public static void AddToInv()
+        {
+
         }
     }
 }
