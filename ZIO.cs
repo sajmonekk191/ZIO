@@ -1,4 +1,5 @@
-﻿// GoldAxe Effect + Damage
+﻿// GoldAxe Effect + Damage - DONE
+// Iventory + add to inv
 
 using System;
 using System.Drawing;
@@ -52,7 +53,7 @@ namespace ZIO
                     Player.Ammo--;
                     ammolbl.Text = Player.Ammo.ToString();
                 }
-                else if (Objekty.Weapons.Melee.GoldAxe.Activated)
+                else if (Objekty.Weapons.Melee.GoldAxe.Activated && Objekty.Weapons.Melee.GoldAxe.AttackReady)
                 {
                     Objekty.Weapons.Melee.GoldAxe.Attack(this, Champion.Location, LastPos);
                 }
@@ -148,7 +149,7 @@ namespace ZIO
                             {
                                 scripts.Deactive.DeactiveAllWeapons(this);
                                 Objekty.Weapons.SinglePistol.GetPistol();
-                                i.Tag = "EquipItem";
+                                containers.hodnoty.Equiped = "Pistol";
                                 RefreshStats();
                             }
                             break;
@@ -157,7 +158,7 @@ namespace ZIO
                             {
                                 scripts.Deactive.DeactiveAllWeapons(this);
                                 Objekty.Weapons.Melee.GoldAxe.GetItem();
-                                i.Tag = "EquipItem";
+                                containers.hodnoty.Equiped = "GoldAxe";
                                 RefreshStats();
                             }
                             break;
@@ -205,6 +206,13 @@ namespace ZIO
                         Objekty.Ammo.PistolAmmo.RemoveBullet((PictureBox)i, this);
                     }
                     if(i.Location.X > 1920 || i.Location.X < 0) Objekty.Ammo.PistolAmmo.RemoveBullet((PictureBox)i, this);
+                }
+                if (i is PictureBox && i.Tag == "GoldAxeEffect")
+                {
+                    if (Objekty.Enemy.BigToast.pos.IntersectsWith(i.Bounds) && Objekty.Enemy.BigToast.HP > 0)
+                    {
+                        Objekty.Enemy.BigToast.HP -= Objekty.Weapons.Melee.GoldAxe.Damage;
+                    }
                 }
                 if (i is PictureBox && i.Tag == "LuckyBlock")
                 {

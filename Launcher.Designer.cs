@@ -41,7 +41,7 @@ namespace ZIO
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.account1 = new global::etcs.Account();
+            this.account1 = new etcs.Account();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.ClientTimer = new System.Windows.Forms.Timer(this.components);
@@ -67,6 +67,7 @@ namespace ZIO
             // 
             this.ExitLabel.AutoSize = true;
             this.ExitLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ExitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ExitLabel.Location = new System.Drawing.Point(3, -5);
             this.ExitLabel.Name = "ExitLabel";
@@ -90,6 +91,7 @@ namespace ZIO
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(4, -4);
             this.label1.Name = "label1";
@@ -146,6 +148,7 @@ namespace ZIO
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::ZIO.Properties.Resources.avatar;
             this.pictureBox2.Location = new System.Drawing.Point(12, 412);
             this.pictureBox2.Name = "pictureBox2";
@@ -157,6 +160,7 @@ namespace ZIO
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::ZIO.Properties.Resources.Account_Icon;
             this.pictureBox4.Location = new System.Drawing.Point(771, 457);
             this.pictureBox4.Name = "pictureBox4";
@@ -169,7 +173,7 @@ namespace ZIO
             // account1
             // 
             this.account1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("account1.BackgroundImage")));
-            this.account1.Location = new System.Drawing.Point(185, 72);
+            this.account1.Location = new System.Drawing.Point(171, 80);
             this.account1.Name = "account1";
             this.account1.Size = new System.Drawing.Size(480, 330);
             this.account1.TabIndex = 11;
@@ -177,6 +181,7 @@ namespace ZIO
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::ZIO.Properties.Resources.play1;
             this.pictureBox3.Location = new System.Drawing.Point(303, 163);
             this.pictureBox3.Name = "pictureBox3";

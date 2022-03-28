@@ -44,12 +44,14 @@ namespace ZIO
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.ammolbl = new System.Windows.Forms.Label();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Champion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Champion
@@ -181,12 +183,22 @@ namespace ZIO
             this.pictureBox15.TabIndex = 36;
             this.pictureBox15.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ZIO.Properties.Resources.Inventory;
+            this.pictureBox2.Location = new System.Drawing.Point(862, 1016);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(193, 65);
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
             // ZIO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.ammolbl);
             this.Controls.Add(this.pictureBox12);
@@ -213,6 +225,7 @@ namespace ZIO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +246,6 @@ namespace ZIO
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label ammolbl;
         private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
