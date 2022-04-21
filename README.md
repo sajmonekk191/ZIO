@@ -1,4 +1,4 @@
 # ZIO
 Basic Game in Window From Application
 
-+ server 
++ Game Server to game
